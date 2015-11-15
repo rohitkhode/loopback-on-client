@@ -3,10 +3,41 @@
 <head>
     <script src="js/loopback-app.js"></script>
 
+    <script>
+        app = require('loopback-app');
+
+        function createCategory() {
+            var model = new app.models.Category();
+            model.level = "Year-1";
+            model.topic = "Numeracy";
+            model.subtopic = "Counting till 10";
+
+            var response = model.save();
+            console.log(model);
+            console.log(JSON.stringify(model));
+        }
+
+        function createCategoryError() {
+            var model = new app.models.Category();
+            model.level = "Year-1";
+            model.subtopic = "Counting till 10";
+
+            console.log(model.isValid());
+            console.log(JSON.stringify(model.errors));
+            var response = model.save();
+            console.log(model);
+            console.log(JSON.stringify(model.errors));
+            console.log(JSON.stringify(model));
+        }
+    </script>
 </head>
 
 <body>
     Hello World!
+
+    <button onclick="createCategory()">Create New</button>
+    <button onclick="createCategoryError()">Error Example</button>
+
 </body>
 
 </html>
