@@ -12,9 +12,14 @@
             model.topic = "Numeracy";
             model.subtopic = "Counting till 10";
 
-            var response = model.save();
-            console.log(model);
-            console.log(JSON.stringify(model));
+            model.save(undefined, function (err, obj) {
+                console.log('Response received');
+                if (err) {
+                    console.log('Error in saving data ', JSON.stringify(err));
+                } else {
+                    console.log('Saved successfully', obj);
+                }
+            });
         }
 
         function createCategoryError() {
@@ -24,10 +29,14 @@
 
             console.log(model.isValid());
             console.log(JSON.stringify(model.errors));
-            var response = model.save();
-            console.log(model);
-            console.log(JSON.stringify(model.errors));
-            console.log(JSON.stringify(model));
+            model.save(undefined, function (err, obj) {
+                console.log('Response received');
+                if (err) {
+                    console.log('Error in saving data ', JSON.stringify(err));
+                } else {
+                    console.log('Saved successfully', obj);
+                }
+            });
         }
     </script>
 </head>
